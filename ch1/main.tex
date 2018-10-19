@@ -1,9 +1,11 @@
 \documentclass[float=false, crop=false]{standalone}
 % \def\input@path{{../}}
 \IfStandalone{ \usepackage{../preamble} }{ \usepackage{preamble} }
+%\usepackage{../preamble}
 
 \begin{document}
-    \include{section1}
+    \input{section1}
+    % \include{section1} % you can also use section1 here.
     \section{第二节}
     Nullam sit amet dapibus tortor.
 Nulla facilisi. Quisque vulputate a mi et accumsan.
