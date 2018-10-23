@@ -14,8 +14,16 @@
 例如，如果需要每一章末尾都生成参考文献列表,则需要在每一章的tex文件末尾加上：
 ```tex
 % file: ch1/main.tex
-\bibliographystyle{plain}  % plain, alpha, abbrv, acm, siam, apalike, etc.
-\IfStandalone{  \bibliography{../shared/reference} }{ \bibliography{shared/reference}  }  % use global ref.
+\documentclass[float=false, crop=false]{standalone}
+\usepackage{.strange}
+\usepackage{bibunits}
+
+\begin{document}
+\begin{bibunit}[plain]
+% cite papers.
+\IfStandalone{  \putbib[../shared/reference] }{ \putbib[shared/reference]  }  % use global ref.
+\end{bibunit}
+\end{document}
 ```
 其中`../shared/reference`路径是该章节所在目录到全局bib文件的相对路径。
 
@@ -58,8 +66,6 @@
 ```
 上面例子中的三个文件均可单独编译，查看效果。如果你正在编写一小节，可以直接编译该小节的tex文件，快速查看效果(如果要编译顶层文件，可能需要较长时间)。
 
-注意：嵌套的子tex文件不支持`\chapter`章节, `\chapter`的标记需要放在最顶层的tex文件中(见document.tex文件)。
-
 ## .strange
 在上述例子中，出现了很多次`\usepackage{.strange}`, 该文件通过**strange**工具生成(工具的实现见strange.go文件)。 `.strange.sty`文件存在于任何有tex文件的目录，用于导入位于*share/preamble.sty*文件，公用的包、环境均写在该*share/preamble.sty*文件中。
 
@@ -77,3 +83,5 @@ cd document/root/dir  # 进入文档项目的根目录
 - https://en.m.wikibooks.org/wiki/LaTeX/Modular_Documents
 - https://www.overleaf.com/learn/latex/Management_in_a_large_project
 - https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects
+- http://tug.ctan.org/tex-archive/macros/latex/contrib/bibunits/bibunits.pdf
+

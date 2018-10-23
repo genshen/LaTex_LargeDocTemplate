@@ -2,6 +2,7 @@
 \usepackage{.strange}
   
 \begin{document}
+\begin{bibunit}[plain]
 \section{第一节}
 Nullam sit amet dapibus tortor.
     Nulla facilisi. Quisque vulputate a mi et accumsan.
@@ -10,6 +11,9 @@ Nullam sit amet dapibus tortor.
 \section{第二节}
 Suspendisse viverra est in nisi malesuada facilisis.
     Vestibulum vitae ex ut est tempus pellentesque a quis metus.
-    
+
+Considered harmful \cite{shannon1948mathematical}.
+
+\IfStandalone{  \putbib[../shared/reference] }{ \putbib[shared/reference]  }  % use global ref.
+\end{bibunit}
 \end{document}
-    

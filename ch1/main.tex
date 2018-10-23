@@ -2,6 +2,7 @@
 \usepackage{.strange}
 
 \begin{document}
+\begin{bibunit}[plain]
     \subimport{sections/}{section1}
     % \include{sections/section1} % you can also include section1 here.
     \section{第二节}
@@ -13,6 +14,6 @@
         \caption{A nice simple diagram}
     \end{figure}
 
-\bibliographystyle{plain}  % plain, alpha, abbrv, acm, siam, apalike, etc.
-\IfStandalone{  \bibliography{../shared/reference} }{ \bibliography{shared/reference}  }  % use global ref.
+\IfStandalone{  \putbib[../shared/reference] }{ \putbib[shared/reference]  }  % use global ref.
+\end{bibunit}
 \end{document}
