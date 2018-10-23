@@ -1,5 +1,10 @@
+.strange.sty
+*.pdf
+*.exp
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
+*.sta
 *.lof
 *.log
 *.lot

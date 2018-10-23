@@ -1,17 +1,16 @@
 \documentclass[float=false, crop=false]{standalone}
-% \def\input@path{{../}}
-\IfStandalone{ \usepackage{../preamble} }{ \usepackage{preamble} }
-%\usepackage{../preamble}
+\usepackage{.strange}
 
 \begin{document}
-    \input{section1}
-    % \include{section1} % you can also use section1 here.
+    \input{sections/section1}
+    % \include{sections/section1} % you can also use section1 here.
     \section{第二节}
-    Nullam sit amet dapibus tortor.
-Nulla facilisi. Quisque vulputate a mi et accumsan.
-Aenean lacinia accumsan erat, ut eleifend leo facilisis et.
-Sed et condimentum arcu.
-Suspendisse viverra est in nisi malesuada facilisis.
-Vestibulum vitae ex ut est tempus pellentesque a quis metus.
+    A TikZ figure will be rendered below this line.
+    \begin{figure}[ht]
+        \centering
+        \subimport{asserts/}{diagram.tex}
+        \label{fig:tikzexample}
+        \caption{A nice simple diagram}
+    \end{figure}
 
 \end{document}
