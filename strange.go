@@ -1,8 +1,8 @@
 package main
 
 // build:
-// GOARCH=amd64 GOOS=linux go build -o put_preamble
-// GOARCH=amd64 GOOS=windows go build -o put_preamble.exe
+// GOARCH=amd64 GOOS=linux go build -o strange
+// GOARCH=amd64 GOOS=windows go build -o strange.exe
 import (
 	"io/ioutil"
 	"log"
