@@ -2,7 +2,6 @@
 \usepackage{.strange}
   
 \begin{document}
-\begin{bibunit}[plain]
 \section{第一节}
 Nullam sit amet dapibus tortor.
     Nulla facilisi. Quisque vulputate a mi et accumsan.
@@ -14,6 +13,6 @@ Suspendisse viverra est in nisi malesuada facilisis.
 
 Considered harmful \cite{shannon1948mathematical}.
 
-\IfStandalone{  \putbib[../shared/reference] }{ \putbib[shared/reference]  }  % use global ref.
-\end{bibunit}
+\printbibliography[heading=subbibliography,title={参考文献}]
+
 \end{document}

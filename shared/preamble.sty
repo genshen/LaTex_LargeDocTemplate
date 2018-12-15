@@ -8,11 +8,10 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-\usepackage[utf8]{inputenc}
-\usepackage{cite}
 \usepackage{hyperref}
 \usepackage[capitalise]{cleveref}
 
-% \usepackage[sectionbib]{natbib}
-% \usepackage[sectionbib]{chapterbib}
-\usepackage[sectionbib]{bibunits}
+% see https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX
+% use \cite or \parencite to cite, no need to add "\usepackage{cite}"
+\usepackage[refsection=chapter,hyperref=true,backend=biber,backref=true]{biblatex} % citestyle=alphabetic,bibstyle=authortitle
+\addbibresource{/your/absolute/path/shared/reference.bib} % bib file path

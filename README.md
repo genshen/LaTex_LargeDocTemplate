@@ -10,22 +10,21 @@
 注：文档LaTex引言放在*shared/preamble.sty* 文件，各部分公用的包可放在这里面；
 
 ## 按章节生成参考文献
-模板主要使用`chapterbib`包实现在一份文档内独立生成参考文献列表。
+模板主要使用`biblatex`包实现在一份文档内独立生成参考文献列表。
 例如，如果需要每一章末尾都生成参考文献列表,则需要在每一章的tex文件末尾加上：
 ```tex
 % file: ch1/main.tex
 \documentclass[float=false, crop=false]{standalone}
 \usepackage{.strange}
-\usepackage{bibunits}
 
 \begin{document}
-\begin{bibunit}[plain]
 % cite papers.
-\IfStandalone{  \putbib[../shared/reference] }{ \putbib[shared/reference]  }  % use global ref.
-\end{bibunit}
+\printbibliography[heading=subbibliography,title={参考文献}]
+
 \end{document}
 ```
-其中`../shared/reference`路径是该章节所在目录到全局bib文件的相对路径。
+在`shared/preamble.sty`文件中导入biblatex包需要设置`refsection=chapter`参数。
+并且`\addbibresource`中需要将bib文件路径替换成自己本地环境的全局路径。
 
 在项目根目录或者各章目录进行编译测试(例如可以使用`latexmk`编译器进行编译)，检查参考文件列表是否正常。
 
@@ -83,5 +82,4 @@ cd document/root/dir  # 进入文档项目的根目录
 - https://en.m.wikibooks.org/wiki/LaTeX/Modular_Documents
 - https://www.overleaf.com/learn/latex/Management_in_a_large_project
 - https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects
-- http://tug.ctan.org/tex-archive/macros/latex/contrib/bibunits/bibunits.pdf
-
+- https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX
