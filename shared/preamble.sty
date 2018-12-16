@@ -5,12 +5,20 @@
 
 \usepackage{import}
 
+% math
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+% algorithm
+\usepackage{eqparbox}
+\usepackage[noend]{algpseudocode}
+% \usepackage[ruled]{algorithm2e} algorithm2e is not supported in standalone mode.
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+
+% reference and cite
 \usepackage{hyperref}
 \usepackage[capitalise]{cleveref}
-
 % see https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX
 % use \cite or \parencite to cite, no need to add "\usepackage{cite}"
 \usepackage[refsection=chapter,hyperref=true,backend=biber,backref=true]{biblatex} % citestyle=alphabetic,bibstyle=authortitle

@@ -1,4 +1,4 @@
-\documentclass[float=false, crop=false]{standalone}
+\documentclass[float=true, crop=false, class=report]{standalone}
 \usepackage{.strange}
 
 \begin{document}
@@ -7,8 +7,31 @@
         Nulla facilisi. Quisque vulputate a mi et accumsan.
         Aenean lacinia accumsan erat, ut eleifend leo facilisis et.
         Sed et condimentum arcu.
-    \section{第二节}
-    Suspendisse viverra est in nisi malesuada facilisis.
-        Vestibulum vitae ex ut est tempus pellentesque a quis metus.
 
+    \section{Dijkstra Algorithm}
+    Suspendisse viverra est in nisi malesuada facilisis.
+    Vestibulum vitae ex ut est tempus pellentesque a quis metus.
+
+    \begin{algorithm}[h]
+        \caption{Dijkstra based Single-Source Maximum Reliability Path Algorithm}\label{alg:dijk8}
+        \begin{algorithmic}
+            \Require Directed network $G=(V,E,w)$, with non-negative edge weights and source $s \in V$.
+            \Ensure Array $\mu(\cdotp)$ of length $n$, where $\mu(u)$ is the maximum reliability for each $u \in V$, and array $pred(\cdotp)$ of length $n$, where $pred(u)$ is the parent of vertex $u$ in the shortest path tree rooted at $s$.
+            \medskip
+            \State $S = \emptyset; S' = V$
+            \For{every $u \in V$}
+            \State $\mu(P) = 0;$
+            \EndFor
+            \State $\mu(s) = 1; pred(s) = 0;$
+            \While{$|S| < n$}
+            \State let $u \in S'$ be the vertex for which $\mu(u) = min_{u \in S'}\{d(u)\};$
+            \State $S = S \cup \{ u \}; S' = S' - \{ u \};$
+                \For{$\forall (u,w) \in E$}
+                    \If {$\mu(w) < \mu(u) \cdotp wt(u,w)$}
+                    \State $\mu(w) = \mu(u) \cdotp wt(u,w)$
+                    \EndIf
+                \EndFor
+            \EndWhile
+        \end{algorithmic}
+    \end{algorithm}
 \end{document}
