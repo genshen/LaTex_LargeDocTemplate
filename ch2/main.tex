@@ -1,5 +1,6 @@
 \documentclass[float=true, crop=false, class=report]{standalone}
 \usepackage{.strange}
+\newcites{second}{参考文献}
   
 \begin{document}
 \section{第一节}
@@ -11,8 +12,9 @@ Nullam sit amet dapibus tortor.
 Suspendisse viverra est in nisi malesuada facilisis.
     Vestibulum vitae ex ut est tempus pellentesque a quis metus.
 
-Considered harmful \cite{shannon1948mathematical}.
+Considered harmful \citesecond{shannon1948mathematical}.
 
-\printbibliography[heading=subbibliography,title={参考文献}]
+\bibliographystylesecond{plain}
+\bibliographysecond{\BIBPATH}
 
 \end{document}
