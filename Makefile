@@ -1,5 +1,5 @@
 document.pdf:
-	latexmk document.tex -xelatex
+	latexmk -e '$$max_repeat=6' document.tex -xelatex
 	# xelatex document.tex 
 
 clean:

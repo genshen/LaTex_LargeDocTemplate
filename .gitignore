@@ -1,4 +1,6 @@
 .strange.sty
+.DS_Store
+
 *.pdf
 *.exp
 

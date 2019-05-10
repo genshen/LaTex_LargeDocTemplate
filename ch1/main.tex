@@ -1,6 +1,5 @@
 \documentclass[float=true, crop=false, class=report]{standalone}
 \usepackage{.strange}
-\newcites{first}{参考文献}
 
 \begin{document}
     \subimport{sections/}{section1}
@@ -15,7 +14,6 @@
     \end{figure}
 
 
-\bibliographystylefirst{plain}
-\bibliographyfirst{\BIBPATH}
+\printbibliography[heading=subbibliography,title={参考文献}]
 
 \end{document}

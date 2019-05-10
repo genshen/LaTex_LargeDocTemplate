@@ -20,6 +20,9 @@
 \usepackage{hyperref}
 \usepackage[capitalise]{cleveref}
 
-\usepackage{multibib}
-% replace "@ BIBPATH" with /your/absolute/path/shared/reference.bib here.
 \newcommand{\BIBPATH}{@BIBPATH}
+% see https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX
+% use \cite or \parencite to cite, no need to add "\usepackage{cite}"
+\usepackage[refsection=chapter,hyperref=true,backend=biber,backref=true]{biblatex} % citestyle=alphabetic,bibstyle=authortitle
+% replace "@ BIBPATH" with /your/absolute/path/shared/reference.bib here.
+\addbibresource{\BIBPATH/reference.bib} % bib file path

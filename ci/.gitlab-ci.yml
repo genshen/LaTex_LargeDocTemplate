@@ -1,0 +1,38 @@
+image: tianon/latex:latest
+variables:
+   BUILD_PATH: "latex"
+
+stages:
+  - compile
+  - deploy
+
+compile:
+  stage: compile
+  tags:
+    - tex
+  before_script:
+    - mkdir -p ${BUILD_PATH}
+    - chmod +x ./strange.sh
+    - ./strange.sh
+  script:
+    -  latexmk -e '$max_repeat=6' -pdf document.tex -xelatex
+  # allow_failure: true
+  artifacts:
+    paths:
+      - document.pdf
+
+pages:
+  stage: deploy
+  tags:
+    - pages
+  dependencies:
+    - compile
+  script:
+    - mkdir public
+    - mv document.pdf public/document.pdf
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+    - develop

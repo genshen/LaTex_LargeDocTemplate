@@ -11,25 +11,27 @@
 
 ## 按章节生成参考文献
 模板主要使用`biblatex`包实现在一份文档内独立生成参考文献列表。
-例如，如果需要每一章末尾都生成参考文献列表,则需要在每一章的tex文件末尾加上：
+例如，如果需要每一章末尾都生成参考文献列表,则需要在每一章的tex文件末尾加上`printbibliography`指令：
 ```tex
 % file: ch1/main.tex
 \documentclass[float=false, crop=false]{standalone}
 \usepackage{.strange}
-\newcites{New}{参考文献}
 
 \begin{document}
 % cite papers.
-\citeNew{Turk1991FaceEigenfaces}.
 
 % generate reference.
-\bibliographystyleNew{plain}
-\bibliographyNew{\BIBPATH}
+\printbibliography[heading=subbibliography,title={参考文献}]
 
 \end{document}
 ```
-在`shared/preamble.sty`文件中导入multibib包`\usepackage{multibib}`。
-需要将`% \newcommand{\BIBPATH}{/your/absolute/path/shared/reference.bib}`中的bib文件路径替换成自己本地环境的全局路径。
+
+在`shared/preamble.sty`文件中导入biblatex包需要设置`refsection=chapter`参数。
+执行 `./strange.sh` 脚本，以修改 `shared/preamble.sty` 文件 `\newcommand{\BIBPATH}{@BIBPATH}` 中定义的值为自己本地环境的bib文件全局路径(或自己手动替换)。
+```diff
+-\newcommand{\BIBPATH}{@BIBPATH}
++\newcommand{\BIBPATH}{/your/absolute/path/shared}
+```
 
 在项目根目录或者各章目录进行编译测试(例如可以使用`latexmk`编译器进行编译)，检查参考文件列表是否正常。
 
@@ -83,8 +85,13 @@ cd document/root/dir  # 进入文档项目的根目录
 ./strange.sh /path/of/document/root/dir
 ```
 
+## CI
+如果你正在使用CI自动化编译生成pdf文件, 可以参考以下CI配置文件:
+- Gitlab CI
+see file [gitlab-ci.yml](ci/.gitlab-ci.yml)
+
 ## 参考
 - https://en.m.wikibooks.org/wiki/LaTeX/Modular_Documents
 - https://www.overleaf.com/learn/latex/Management_in_a_large_project
 - https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects
-- https://www.overleaf.com/learn/latex/multibib
+- https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX
